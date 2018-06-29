@@ -24,7 +24,7 @@ export class GetSelectionsService {
 
   private errorHandling<T> (operation: string, result?: T) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.message}`); //Throwing error(That can be logged)
+      console.error(`${operation} failed: ${error.statusText}, status: ${error.status}, URL: ${error.url}`); //Throwing error(That can be logged)
       //it returns empty results to run the App
       return of(result);
     };
