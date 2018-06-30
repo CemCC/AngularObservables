@@ -11,22 +11,19 @@ import 'rxjs/Rx';
 })
 export class GetSelectionsService {
 
-  constructor( private http: HttpClient) { }
-  private selectionsUrl = 'api/selections';  // URL to web api
+  constructor(private http: HttpClient) { }
+  private selectionsUrl = '../assets/data/db.json';  // URL to web api
  
-  getSelections(): Observable <Selections[]>{
+  getSelections():Observable<Selections[]>{
     return this.http.get<Selections[]>(this.selectionsUrl)
-      .pipe(
-        map((responseSelections)=> responseSelections),
-        catchError(this.errorHandling('getSelections', []))
-      );  
+    .catch(this.errorHandling('getSelections'))  
   }
 
-  private errorHandling<T> (operation: string, result?: T) {
+  private errorHandling<T> (operation: string) {
     return (error: any): Observable<T> => {
-      console.error(`${operation} failed: ${error.statusText}, status: ${error.status}, URL: ${error.url}`); //Throwing error(That can be logged)
-      //it returns empty results to run the App
-      return of(result);
+      //Throwing error(That can be logged)
+      console.error(`${operation} failed: ${error.statusText}, status: ${error.status}, URL: ${error.url}`); 
+      return Observable.throw(error);
     };
   }
 

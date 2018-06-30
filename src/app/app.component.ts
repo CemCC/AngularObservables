@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { GetSelectionsService } from '../services/get-selections.service';
 import { Selections } from '../model/selections';
-import { Observable } from "rxjs/Rx"
+import { Observable, Subscription } from "rxjs/Rx"
 
 @Component({
   selector: 'app-root',
@@ -11,10 +11,12 @@ import { Observable } from "rxjs/Rx"
 
 export class AppComponent {
   title = 'app';
-  public selections$ : Observable<Selections[]>;
+  public selections: Selections[]
   constructor( private selectionService: GetSelectionsService ){}
 
   ngOnInit() {
-    this.selections$ = this.selectionService.getSelections();
+     this.selectionService.getSelections().subscribe(Selections => {
+      this.selections = Selections['Selections'];
+     });
   }
 }

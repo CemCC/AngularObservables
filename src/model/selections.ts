@@ -2,7 +2,7 @@
 export class Selections {
 
     constructor(
-        public selection: string
+        public select: string
     ) {}
 
 }

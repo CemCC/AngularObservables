@@ -1,10 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
-  <label>Summary: </label>
+  <label>Selection: </label>
   <select>
       <option value="0">--All--</option>
-      <option *ngFor="let selection of selections$ | async" value={{selection}}>
-          {{selection}}
+      <option *ngFor="let selection of selections" value={{selection.select}}>
+          {{selection.select}}
       </option>
   </select>
 </div>
