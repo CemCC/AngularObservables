@@ -18,7 +18,7 @@ export class AppComponent {
 
   ngOnInit() {
     this.selections$ = this.selectionService.getSelections();
-   //this.defaultOption = 'number2';
+    this.defaultOption = 'number1';
   }
 
   /*private searchSelections( selections: Selection[]){
