@@ -1,5 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div >
+<div *ngIf="(selections$ | async)?.length > 0">
   <label>Selection: </label>
   <select  [(ngModel)]="defaultOption">
       <option [value]="0" [selected]="defaultOption == 0">--All--</option>

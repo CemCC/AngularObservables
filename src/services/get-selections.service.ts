@@ -14,7 +14,7 @@ export class GetSelectionsService {
  
   public getSelections():Observable<Selection[]>{
     return this.http.get<Selection[]>(this.selectionsUrl)
-    .map(selectionsresponse => selectionsresponse['Selections'])
+    .map(selectionsResponse => selectionsResponse['Selections'])
     .catch(this.errorHandling('getSelections'))  
   }
 
