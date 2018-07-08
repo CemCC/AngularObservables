@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetSelectionsService } from '../services/get-selections.service';
 import { FormsModule }   from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SearchSelectionsPipe }  from '../pipes/search-selections.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchSelectionsPipe
   ],
   imports: [
     BrowserModule,

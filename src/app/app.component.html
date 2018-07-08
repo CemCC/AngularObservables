@@ -2,8 +2,8 @@
 <div *ngIf="(selections$ | async)?.length > 0">
   <label>Selection: </label>
   <select  [(ngModel)]="defaultOption">
-      <option [value]="0" [selected]="defaultOption == 0">--All--</option>
-      <option *ngFor="let selection of selections$ | async" >
+      <option [ngValue]="0" [selected]="defaultOption == 0">--All--</option>
+      <option *ngFor="let selection of selections$ | async | searchSelections: 'number2'" >
           {{selection.select}}
       </option>
   </select>
