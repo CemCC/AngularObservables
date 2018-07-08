@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Selections } from '../model/selections';
+import { Selection } from '../model/selections';
 import 'rxjs/Rx';
 
 @Injectable({
@@ -12,8 +12,9 @@ export class GetSelectionsService {
   constructor(private http: HttpClient) { }
   private selectionsUrl = '../assets/data/db.json';  // URL to web api
  
-  public getSelections():Observable<Selections[]>{
-    return this.http.get<Selections[]>(this.selectionsUrl)
+  public getSelections():Observable<Selection[]>{
+    return this.http.get<Selection[]>(this.selectionsUrl)
+    .map(selectionsresponse => selectionsresponse['Selections'])
     .catch(this.errorHandling('getSelections'))  
   }
 

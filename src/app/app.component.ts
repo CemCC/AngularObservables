@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GetSelectionsService } from '../services/get-selections.service';
-import { Selections } from '../model/selections';
+import { Selection } from '../model/selections';
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'app-root',
@@ -10,18 +11,15 @@ import { Selections } from '../model/selections';
 
 export class AppComponent {
   title = 'app';
-  public selections: Selections[];
+  public selections$ : Observable<Selection[]>;
   public defaultOption : string;
   constructor( private selectionService: GetSelectionsService ){}
 
   ngOnInit() {
-    this.selectionService.getSelections().subscribe(Selections => {
-      this.selections = Selections['Selections'];
-      this.searchSelections(this.selections);
-    });
+    this.selections$ = this.selectionService.getSelections();
   }
 
-  private searchSelections( selections: Selections[]){
+  private searchSelections( selections: Selection[]){
 
     //here is searching the array(condition inside the filter) and returns the results in the array.
     var searching = selections.filter(selection => selection.select == 'number2'); 

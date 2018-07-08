@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GetSelectionsService } from '../services/get-selections.service';
 import { FormsModule }   from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { FormsModule }   from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [GetSelectionsService],
   bootstrap: [AppComponent]
